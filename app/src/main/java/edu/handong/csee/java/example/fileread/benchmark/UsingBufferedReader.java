@@ -1,38 +1,58 @@
 package edu.handong.csee.java.example.fileread.benchmark;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 
 /**
  * Created by sherxon on 4/23/17. https://github.com/sherxon/AlgoDS/tree/master/src/oi
  */
 public class UsingBufferedReader {
     public static void main(String[] args) throws IOException {
+    	 if (args.length < 1) {
+             System.out.println("Please enter a file name. ");
+             return;
+         }
+
+         String fileName = args[0];
+         //-------------- Test reading file --------------------
+
+         StopWatch.start();
+
+         BufferedReader inputStream = new BufferedReader(new FileReader(fileName));
+         while (inputStream.read() != -1) {}
+
+         long duration = StopWatch.stop();
+         System.out.println(duration + " milsec");
+
+         inputStream.close();
 
 
         //-------------- Test reading 1 MB file. --------------------
 
-        StopWatch.start();
-
-        BufferedReader inputStream= new BufferedReader(new FileReader(DumpDataWriter.input1MB));
-        while (inputStream.read()!=-1){}
-
-        long duration = StopWatch.stop();
-        System.out.println(duration + " milsec");
-        
-        inputStream.close();
+//        StopWatch.start();
+//
+//        BufferedReader inputStream= new BufferedReader(new FileReader(DumpDataWriter.input1MB));
+//        while (inputStream.read()!=-1){}
+//
+//        long duration = StopWatch.stop();
+//        System.out.println(duration + " milsec");
+//        
+//        inputStream.close();
 
 
         //-------------- Test reading 10 MB file. --------------------
 
-        StopWatch.start();
-
-        BufferedReader inputStream2= new BufferedReader(new FileReader(DumpDataWriter.input10MB));
-        while (inputStream2.read()!=-1){}
-
-        long duration2 = StopWatch.stop();
-        System.out.println(duration2 + " milsec");
-
-        inputStream2.close();
+//        StopWatch.start();
+//
+//        BufferedReader inputStream2= new BufferedReader(new FileReader(DumpDataWriter.input10MB));
+//        while (inputStream2.read()!=-1){}
+//
+//        long duration2 = StopWatch.stop();
+//        System.out.println(duration2 + " milsec");
+//
+//        inputStream2.close();
 
         /*
         //-------------- Test reading 100 MB file. --------------------
